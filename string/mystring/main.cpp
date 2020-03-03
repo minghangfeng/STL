@@ -5,10 +5,9 @@ using std::cin;
 using std::endl;
 
 int main(){
-    MyString str1 = "abcdefgfgfg";
-    MyString str2("fg");
-    cout<<str1.find(str2)<<endl;
-    MyString str3;
-    str3 = str1 + str2;
-    cout<<str3<<endl;
+    MyString str1 = "16266366646666";
+    MyString str2("12221");
+    int *next = new int[str2.length()];
+    str2.get_next(str2, next);
+    cout<<next[1]<<endl;
 }

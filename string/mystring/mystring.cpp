@@ -25,31 +25,34 @@ MyString::~MyString(){
 }
 
 
-int MyString::length(){
+int MyString::length() const {
     return string_length;
 }
 
 
-int MyString::find(const MyString &str){
+const int MyString::find(const MyString &str){
     if (str.string_length > string_length){
         return -1;
     }
     else{
         int i = 0;
         int j = 0;
-        for (i; i < str.string_length; i++){
-            for (j; j < string_length; j++){
-                if (str[i] == data[j]){
-                    j = j + 1;
-                    break;
-                }else{
-                    if(i > 0){
-                        return -1;
-                    }
-                }
-            }
+        int *next = new int[str.string_length];
+        while (i < string_length && j < str.string_length) {
+           if (data[i] == str.data[j]) { 
+               i++;
+               j++;
+            }else{
+                i = i - j + 1; 
+                j = 0; 
+            }   
         }
-        return j - str.string_length;
+
+        if (j == str.string_length){
+            return i - j;
+        }else{
+            return -1;
+        }
     }
 }
 
@@ -95,3 +98,4 @@ istream & operator >> (istream &is, MyString &str){
     strcpy(str.data, buff);
     return is;
 }
+

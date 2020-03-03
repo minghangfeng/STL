@@ -15,8 +15,8 @@ public:
     MyString(const char* str = NULL);
     MyString(const MyString &str);
     ~MyString();
-    int length();
-    int find(const MyString &str);
+    int length() const ;
+    const int find(const MyString &str);
 
     MyString operator=(const MyString &str);
     MyString operator+(const MyString &str);
